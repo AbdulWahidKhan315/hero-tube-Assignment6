@@ -17,11 +17,16 @@ const loadData = async (id) => {
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
     const data = res.data;
-    console.log(data)
+    const oppsSorry = document.getElementById('oops-sorry');
+    if(data.length === 0){
+        oppsSorry.classList.remove('hidden');
+    }else{
+        oppsSorry.classList.add('hidden');
+    }
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent='';
     data.forEach(res => {
-        // console.log(res);
+        // console.log(res.length);
         // verified or blue tik condition here......
         let url = ''
         if(res?.authors[0]?.verified === true){
@@ -32,12 +37,12 @@ const loadData = async (id) => {
         // dynamically addding card........
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card bg-base-100 shadow-xl">
             <figure><img class="w-[400px] h-[300px]" src="${res?.thumbnail}" alt="Image" /></figure>
             <div class="card-body">
                 <div class="flex gap-3">
                     <div>
-                        <img class="w-14 rounded-full" src="${res?.authors[0]?.profile_picture}" alt="Image" />
+                        <img class="w-14 h-14 rounded-full" src="${res?.authors[0]?.profile_picture}" alt="Image" />
                     </div>
                     <div>   
                         <h3 class="text-xl font-bold">${res?.title}</h3>
