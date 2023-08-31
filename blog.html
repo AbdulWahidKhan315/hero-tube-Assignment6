@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class=" bg-black p-2">
+    <header>
+        <nav>
+            <div class="text-white flex justify-between px-4 font-bold text-xl">
+                <p>You can</p>
+                <p>If you work hard</p>
+            </div>
+            <hr>
+        </nav>
+        <div class="space-y-5 rounded-lg text-white mt-3">
+            <h1 class="text-center text-2xl md:text-4xl font-bold"><span class="text-3xl md:text-5xl text-pink-500">Welcome</span> to my blog page</h1>
+            <h2 class="text-center text-2xl font-bold">Hello, <br> my beloved programming hero</h2>
+        </div>
+    </header>
+    <main class="container mx-auto">
+        <!-- first question section -->
+        <section class="mt-14 text-white">
+            <h2 class="text-2xl"><span class="text-3xl underline">Question-1:</span> Discuss the scope of var, let and const?
+            </h2>
+            <h2 class="text-2xl ml-0 lg:ml-48 mt-6">Answer:</h2>
+            <div class="ml-0 lg:ml-48 rounded-lg w-[400px] md:w-[740px] lg:w-[800px] h-[500px]  lg:h-[500px] border border-white p-4 my-5 shadow-2xl shadow-pink-400 overflow-hidden overflow-y-auto">
+                <h2 class="text-xl font-bold text-purple-400">* Describing about var scope...</h2>
+                <p class="mt-4">Scope refers to where these variables are available for use. var declarations are globally scoped or function/locally scoped.</p>
+                <p class="mt-8">The scope is global when a var variable is declared outside a function. This means that any variable that is declared with var outside a function block is available for use in the whole window.var is function scoped when it is declared within a function. This means that it is available and can be accessed only within that function.</p>
+                <p class="font-bold mt-3 text-amber-500">Here giving an example to understand</p>
+                <p class="ml-10">var name = "wahid khan"; <br> function newFunction(){ <br> var hello = "hello" <br>}</p>
+                <p>Here, greeter is globally scoped because it exists outside a function while hello is function scoped. So we cannot access the variable hello outside of a function. So if we do this:</p>
+                <p class="mt-4 ml-10">var name = "wahid khan"; <br> function newFunction(){ <br> var hello = "hello" <br>} <br> console.log(hello); //error: hello is not defined.</p>
+                <p>We'll get an error which is as a result of hello not being available outside the function.</p>
+                <h2 class="text-xl my-4 font-bold text-purple-400">* Describing about let scope...</h2>
+                <p>let is block scoped. <br>A block is a chunk of code bounded by {}. A block lives in curly braces. Anything within curly braces is a block.So a variable declared in a block with let  is only available for use within that block.</p>
+                <p class="font-bold mt-3 text-amber-500">Here giving an example to understand</p>
+                <p class="mt-4 ml-10">let name = "wahid khan"; <br>let times = 4; <br> if(times > 3) { <br> let hello="hello wahid khan"; <br> console.log(hello); // "hello wahid khan" <br>} <br> console.log(hello) // hello is not defined.</p>
+                <p>We see that using hello outside its block (the curly braces where it was defined) returns an error. This is because let variables are block scoped .</p>
+                <h2 class="text-xl my-4 font-bold text-purple-400">* Describing about const scope...</h2>
+                <p>Const is also a block scope. <br>Variables declared with the const maintain constant values. const declarations share some similarities with let declarations.</p>
+                <p class="font-bold mt-3 text-amber-500">Here giving an example to understand</p>
+                <p class="mt-4 ml-10">const name = "wahid khan"; <br>const times = 4; <br> if(times > 3) { <br> const hello="hello wahid khan"; <br> console.log(hello); // "hello wahid khan" <br>} <br> console.log(hello) // hello is not defined.</p>
+            </div>
+
+        </section>
+        <!-- second question section -->
+        <section class="mt-14 text-white">
+            <h2 class="text-2xl"><span class="text-3xl underline">Question-2:</span> Tell us the use cases of null and undefined?
+            </h2>
+            <h2 class="text-2xl ml-0 lg:ml-48 mt-6">Answer:</h2>
+            <div class="ml-0 lg:ml-48 rounded-lg w-[400px] md:w-[740px] lg:w-[800px] h-[500px]  lg:h-[500px] border border-white p-4 my-5 shadow-2xl shadow-pink-400 overflow-hidden overflow-y-auto">
+                <h2 class="text-xl font-bold text-purple-400">* Describing about Null...</h2>
+                <p>It is the intentional absence of the value. It is one of the primitive values of JavaScript.Null is an assignment value. It can be assigned to a variable as a representation of no value.It is a Primitive value in Javascript.Its syntax is -: null <br>Its supported browsers are -:Chrome , Microsoft Edge , Internet Explorer , Firefox , Safari , Opera Mini. <br>The type of null is : OBJECT</p>
+                <p class="mt-4">null is equal to undefined but not identical.When we define a variable to undefined then we are trying to convey that the variable does not exist . When we define a variable to null then we are trying to convey that the variable is empty.</p>
+                <p>We can look at below for better understanding... <br>null == undefined // true <br> null === undefined // false <br>We can also defferentiate by using NaN... <br>isNaN(2 + null) // false <br>isNaN (2 + undefined) //true</p>
+                <p class="font-bold mt-3 text-amber-500">Here giving a little example to understand null</p>
+                <p class="ml-10">null ? console.log("true") : console.log("false") // false <br>null is also referred as false.</p>
+                <h2 class="text-xl font-bold text-purple-400">* Describing about Undefined...</h2>
+                <p>It means the value does not exist in the compiler. It is the global object.Undefined means a variable has been declared but has yet not been assigned a value.It is an ECMAScript1 (ES1) feature. <br>Its supported browsers are -: Chrome , Microsoft Edge , Internet Explorer , Firefox , Safari , Opera Mini <br>It is a global property.</p>
+                <p class="font-bold mt-3 text-amber-500">Here giving an example to understand undefined</p>
+                <p class="ml-10">When variable is not assigned a value...... <br> var temp; <br> if(temp === undefined) <br> console.log("true"); <br>else <br> console.log("false"); <br>Output: true</p>
+                <p class="ml-10 mt-4"> Accessing value which does not exist.... <br>var temp =['a','b','c']; <br>if(temp[3] === undefined) <br>console.log("true"); <br> else <br> console.log("false"); <br> Output: true.</p>
+            </div>
+        </section>
+        <section class="mt-14 text-white">
+            <h2 class="text-2xl"><span class="text-3xl underline">Question-3:</span> What do you mean by REST API?
+            </h2>
+            <h2 class="text-2xl ml-0 lg:ml-48 mt-6">Answer:</h2>
+            <div class="ml-0 lg:ml-48 rounded-lg w-[400px] md:w-[740px] lg:w-[800px] h-[500px]  lg:h-[500px] border border-white p-4 my-5 shadow-2xl shadow-pink-400 overflow-hidden overflow-y-auto">
+                <h2 class="text-xl font-bold text-purple-400">* Describing about Rest API...</h2>
+                <p class="font-bold mt-3 text-amber-500">Firstly Describing the API</p>
+                <p>An API is a set of definitions and protocols for building and integrating application software. It's sometimes referred to as a contract between an information provider and an information user.If you want to interact with a computer or system to retrieve information or perform a function, an API helps you communicate what you want to that system so it can understand and fulfill the request. </p>
+                <p class="pt-4">You can think of an API as a mediator between the users or clients and the resources or web services they want to get. It's also a way for an organization to share resources and information while maintaining security, control, and authentication—determining who gets access to what.Another advantage of an API is that you don't have to know the specifics of caching—how your resource is retrieved or where it comes from.</p>
+                <p class="font-bold mt-3 text-amber-500">Secondly Describing the REST API</p>
+                <p>When a client request is made via a RESTful API, it transfers a representation of the state of the resource to the requester or endpoint. This information, or representation, is delivered in one of several formats via HTTP: JSON (Javascript Object Notation), HTML, XLT, Python, PHP, or plain text. JSON is the most generally popular file format to use because, despite its name, it's language-agnostic, as well as readable by both humans and machines.</p>
+                <p class="mt-4">Something else to keep in mind: Headers and parameters are also important in the HTTP methods of a RESTful API HTTP request, as they contain important identifier information as to the request's metadata, authorization, uniform resource identifier (URI), caching, cookies, and more. There are request headers and response headers, each with their own HTTP connection information and status codes.</p>
+                <p>In order for an API to be considered RESTful, it has to conform to these criteria: <br> * A client-server architecture made up of clients, servers, and resources, with requests managed through HTTP. <br> * Stateless client-server communication, meaning no client information is stored between get requests and each request is separate and unconnected. <br>* Cacheable data that streamlines client-server interactions. <br>* A uniform interface between components so that information is transferred in a standard form. <br>* A layered system that organizes each type of server (those responsible for security, load-balancing, etc.) involved the retrieval of requested information into hierarchies, invisible to the client. <br>* Code-on-demand (optional): the ability to send executable code from the server to the client when requested, extending client functionality.</p>
+                <p class="mt-4">Though the REST API has these criteria to conform to, it is still considered easier to use than a prescribed protocol like SOAP (Simple Object Access Protocol), which has specific requirements like XML messaging, and built-in security and transaction compliance that make it slower and heavier. </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
