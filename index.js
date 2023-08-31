@@ -1,3 +1,4 @@
+let emptyArr = [];
 const loadAllCategories = async () => {
     const response = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const res = await response.json();
@@ -13,10 +14,22 @@ const loadAllCategories = async () => {
     })
 }
 
-const loadData = async (id) => {
+const loadData = async (id,isSort) => {
+    emptyArr.push(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
     const data = res.data;
+    // sorting the data if the isSort is true.....
+    if(isSort){
+        data.sort((a,b)=>{
+            const viewA = parseFloat(a.others.views)
+            const viewB = parseFloat(b.others.views)
+            if(viewA<viewB) return 1;
+            else if(viewA>viewB) return -1;
+            return 0;
+        })
+    }
+    // if there is no data then it will show oops sorry......
     const oppsSorry = document.getElementById('oops-sorry');
     if(data.length === 0){
         oppsSorry.classList.remove('hidden');
@@ -25,8 +38,9 @@ const loadData = async (id) => {
     }
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent='';
+    
     data.forEach(res => {
-        // console.log(res.length);
+        const view = parseFloat(res?.others?.views);
         // verified or blue tik condition here......
         let url = ''
         if(res?.authors[0]?.verified === true){
@@ -60,7 +74,15 @@ const loadData = async (id) => {
         `
         cardContainer.appendChild(div);
     })
-    
 }
-// loadData('1000')
+let emptyNewArr = emptyArr
+const blogBtnHandler = () =>{
+    window.location.href = "http://127.0.0.1:5501/blog.html";
+}
+
+const sortByViewHandler=()=>{
+    let newId = emptyNewArr[emptyNewArr.length - 1];
+    loadData(newId,true)
+}
+loadData('1000')
 loadAllCategories();
