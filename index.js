@@ -5,17 +5,15 @@ const loadAllCategories = async () => {
     const data = res.data;
     const tabContainer = document.getElementById('tab-container');
     data.forEach(res => {
-        // console.log(res)
         const div = document.createElement('div');
         div.innerHTML = `
-        <a class="tab"><button onclick="loadData('${res.category_id}')" class="btn btn-sm">${res.category}</button></a>
+        <a class="tab"><button onclick="loadData('${res.category_id}')" class="btn btn-sm">${res.category}</button></a> 
         `
         tabContainer.appendChild(div);
     })
 }
 
 const loadData = async (id,isSort) => {
-    // console.log(id)
     emptyArr.push(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
@@ -43,7 +41,6 @@ const loadData = async (id,isSort) => {
     data.forEach(res => {
         const postedDate = res?.others?.posted_date;
         const timeInNumber = parseInt(postedDate);
-        // console.log(timeInNumber)
         let showhrsAndhrs ='';
         const hours = Math.floor(timeInNumber / 3600);
         const minutes = Math.floor((timeInNumber - (hours*3600)) /60);
@@ -51,7 +48,6 @@ const loadData = async (id,isSort) => {
         <p>${hours}hrs ${minutes} min ago</p>
     </div>`
 
-        const view = parseFloat(res?.others?.views);
         // verified or blue tik condition here......
         let url = ''
         if(res?.authors[0]?.verified === true){
