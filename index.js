@@ -15,6 +15,7 @@ const loadAllCategories = async () => {
 }
 
 const loadData = async (id,isSort) => {
+    // console.log(id)
     emptyArr.push(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
@@ -40,6 +41,16 @@ const loadData = async (id,isSort) => {
     cardContainer.textContent='';
     
     data.forEach(res => {
+        const postedDate = res?.others?.posted_date;
+        const timeInNumber = parseInt(postedDate);
+        // console.log(timeInNumber)
+        let showhrsAndhrs ='';
+        const hours = Math.floor(timeInNumber / 3600);
+        const minutes = Math.floor((timeInNumber - (hours*3600)) /60);
+        isNaN(timeInNumber)?showhrsAndhrs='' : showhrsAndhrs=`<div class="w-44 bg-black absolute right-1 bottom-1 p-1 rounded-lg text-white">
+        <p>${hours}hrs ${minutes} min ago</p>
+    </div>`
+
         const view = parseFloat(res?.others?.views);
         // verified or blue tik condition here......
         let url = ''
@@ -52,7 +63,10 @@ const loadData = async (id,isSort) => {
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
-            <figure><img class="w-[400px] h-[300px]" src="${res?.thumbnail}" alt="Image" /></figure>
+            <div class="relative">
+                <figure><img class="w-[400px] h-[300px]" src="${res?.thumbnail}" alt="Image" /></figure>
+                ${showhrsAndhrs}
+            </div>
             <div class="card-body">
                 <div class="flex gap-3">
                     <div>
