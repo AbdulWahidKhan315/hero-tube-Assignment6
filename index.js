@@ -10,11 +10,13 @@ const loadAllCategories = async () => {
         <a class="tab"><button id="red-btn" onclick="loadData('${res.category_id}')" class="btn btn-sm redBtn">${res.category}</button></a> 
         `
         tabContainer.appendChild(div);
+        // default autofocus for first button.....
+        document.getElementById('red-btn').focus();
+        document.getElementById('red-btn').style.outline = 'none';
     })
 }
 
 const loadData = async (id,isSort) => {
-    
     emptyArr.push(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
