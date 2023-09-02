@@ -7,13 +7,14 @@ const loadAllCategories = async () => {
     data.forEach(res => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <a class="tab"><button onclick="loadData('${res.category_id}')" class="btn btn-sm">${res.category}</button></a> 
+        <a class="tab"><button id="red-btn" onclick="loadData('${res.category_id}')" class="btn btn-sm redBtn">${res.category}</button></a> 
         `
         tabContainer.appendChild(div);
     })
 }
 
 const loadData = async (id,isSort) => {
+    
     emptyArr.push(id);
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const res = await response.json();
@@ -87,7 +88,7 @@ const loadData = async (id,isSort) => {
 }
 let emptyNewArr = emptyArr
 const blogBtnHandler = () =>{
-    window.location.href = "http://127.0.0.1:5501/blog.html";
+    window.location.href = "blog.html";
 }
 
 const sortByViewHandler=()=>{
